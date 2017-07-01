@@ -1,0 +1,29 @@
+name:                           transient-sdl2-example
+version:                        0.0.0.1
+author:                         Kuklin Nikolai
+maintainer:                     nickkuklin@gmail.com
+build-type:                     Simple
+cabal-version:                  >=1.10
+
+executable                      uncomposable
+  main-is:                      Uncomposable.hs
+  ghc-options:                  -threaded -O2 -Wall
+                                -fprint-explicit-foralls -fprint-explicit-kinds
+  default-extensions:           OverloadedStrings
+                              , LambdaCase
+  build-depends:                base
+                              , transformers
+                              , sdl2
+  default-language:             Haskell2010
+
+executable                      composable
+  main-is:                      Composable.hs
+  ghc-options:                  -threaded -O2 -Wall
+                                -fprint-explicit-foralls -fprint-explicit-kinds
+  default-extensions:           OverloadedStrings
+                              , LambdaCase
+  build-depends:                base
+                              , transformers
+                              , sdl2
+                              , transient      == 0.5.8
+  default-language:             Haskell2010

@@ -1,0 +1,8 @@
+local-bin-path: .
+flags: {}
+extra-package-dbs: []
+packages:
+- '.'
+extra-deps:
+  - transient-0.5.8
+resolver: lts-8.20
