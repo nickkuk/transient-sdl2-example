@@ -2,8 +2,6 @@ module Main where
 
 import Control.Applicative
 import Control.Monad
-import Control.Monad.IO.Class
-import Control.Concurrent
 import SDL
 import Transient.Base
 import Transient.Internals
@@ -27,7 +25,6 @@ main = void . runTransient . threads 0 $ do              -- run TransIO in initi
   redraw
   e <- waitEvents SDL.waitEvent
   exitSDL e <|> redraw
-  return ()
 
 initSDL :: TransIO ()
 initSDL = do
@@ -41,5 +38,5 @@ exitSDL (Event _ QuitEvent) = do
   getState >>= destroyRenderer
   getState >>= destroyWindow
   SDL.quit
-  liftIO $ myThreadId >>= killThread                     -- how to stop listening events?
+  killBranch
 exitSDL _ = stop
